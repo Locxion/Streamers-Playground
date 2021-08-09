@@ -2,8 +2,8 @@ namespace Assets.Scripts.Enum
 {
     public enum GameStateEnum
     {
+        PathfinderRunning,
         InMenu,
-        Running,
         Paused,
         Stopped
     }

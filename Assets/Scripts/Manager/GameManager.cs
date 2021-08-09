@@ -1,5 +1,6 @@
 using Assets.Scripts.Enum;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets
 {
@@ -7,6 +8,7 @@ namespace Assets
     {
         public GameStateEnum _gameState;
         public SettingsManager _settingsManager;
+        public GameObject __navMeshSurface;
 
         // Start is called before the first frame update
         private void Start()
@@ -16,19 +18,26 @@ namespace Assets
 
         public void Update()
         {
-            if (_gameState == GameStateEnum.Running)
+            if (_gameState == GameStateEnum.PathfinderRunning)
             {
+                var navMesh = __navMeshSurface.GetComponent<NavMeshSurface>();
+                navMesh.BuildNavMesh();
             }
         }
 
         public void StartGame()
         {
-            _gameState = GameStateEnum.Running;
+            _gameState = GameStateEnum.PathfinderRunning;
         }
 
         public void StopGame()
         {
             _gameState = GameStateEnum.Stopped;
+        }
+
+        public void PauseGame()
+        {
+            _gameState = GameStateEnum.Paused;
         }
 
         public void ResetGame()
