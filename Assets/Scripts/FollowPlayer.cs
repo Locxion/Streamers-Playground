@@ -13,7 +13,7 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (_gameManager._gameState == GameStateEnum.PathfinderRunning)
+        if (_gameManager._gameState == GameStateEnum.Running && _gameManager._gameMode == GameModeEnum.PathFinding)
         {
             _navMeshAgent.SetDestination(_player.transform.position);
 

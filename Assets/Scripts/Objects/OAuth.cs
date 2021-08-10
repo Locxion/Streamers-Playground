@@ -1,4 +1,4 @@
-﻿public class OAuthObject
+﻿public class OAuth
 {
     public dynamic Access_Token { get; set; }
     public dynamic Refresh_Token { get; set; }

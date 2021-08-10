@@ -25,7 +25,7 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (_gameManager._gameState == GameStateEnum.PathfinderRunning)
+        if (_gameManager._gameState == GameStateEnum.Running)
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

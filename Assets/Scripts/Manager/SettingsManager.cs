@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SettingsManager : MonoBehaviour
 {
-    public GameSettingsObject CurrentGameSettings;
+    public GameSettings CurrentGameSettings;
 
     // Start is called before the first frame update
     private void Start()
@@ -21,13 +21,13 @@ public class SettingsManager : MonoBehaviour
             Debug.Log("No Settings File found ... Create Blank Settings instead ...");
             Directory.CreateDirectory(Constants.ProgramfilesfolderPath);
             File.Create(Constants.SettingsPath);
-            CurrentGameSettings = new GameSettingsObject();
+            CurrentGameSettings = new GameSettings();
         }
     }
 
-    public GameSettingsObject LoadSettings()
+    public GameSettings LoadSettings()
     {
-        return JsonConvert.DeserializeObject<GameSettingsObject>(File.ReadAllText(Constants.SettingsPath));
+        return JsonConvert.DeserializeObject<GameSettings>(File.ReadAllText(Constants.SettingsPath));
     }
 
     public void SaveSettings()

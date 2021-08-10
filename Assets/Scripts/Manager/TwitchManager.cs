@@ -94,7 +94,7 @@ namespace Assets.Scripts.Manager
             _settingsManager.CurrentGameSettings.RefreshToken = authObject.Refresh_Token;
         }
 
-        public async Task<OAuthObject> GetAuthToken()
+        public async Task<OAuth> GetAuthToken()
         {
             //Source from: https:github.com/googlesamples/oauth-apps-for-windows/blob/master/OAuthDesktopApp/OAuthDesktopApp/MainWindow.xaml.cs
             //Creates an HttpListener to listen for requests on that redirect URI.
@@ -162,7 +162,7 @@ namespace Assets.Scripts.Manager
             return await PerformCodeExchange(code);
         }
 
-        private async Task<OAuthObject> PerformCodeExchange(string code, bool isRefresh = false)
+        private async Task<OAuth> PerformCodeExchange(string code, bool isRefresh = false)
         {
             UnityEngine.Debug.Log("Exchanging code for tokens...");
             string tokenRequestBody = "";
@@ -206,7 +206,7 @@ namespace Assets.Scripts.Manager
                     //converts to dictionary
                     dynamic tokenEndpointDecoded = JsonConvert.DeserializeObject(responseText);
 
-                    return new OAuthObject { Access_Token = tokenEndpointDecoded["access_token"], Refresh_Token = tokenEndpointDecoded["refresh_token"], Expires_In = tokenEndpointDecoded["expires_in"] };
+                    return new OAuth { Access_Token = tokenEndpointDecoded["access_token"], Refresh_Token = tokenEndpointDecoded["refresh_token"], Expires_In = tokenEndpointDecoded["expires_in"] };
                 }
             }
             catch (WebException ex)

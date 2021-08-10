@@ -1,6 +1,6 @@
 namespace Assets.Scripts.Objects
 {
-    public class GameSettingsObject
+    public class GameSettings
     {
         public string Username { get; set; }
         public string AccessToken { get; set; }
